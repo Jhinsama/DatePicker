@@ -1,27 +1,4 @@
-(factory => {
-  factory(window)
-})(win => {
-  const doc = win.document
-  const isFox = /.*Firefox.*/.test(navigator.userAgent)
-  const dayArr = [31,[28,29],31,30,31,30,31,31,30,31,30,31]
-  const weekArr = ['日','一','二','三','四','五','六']
-  const monthArr = ['一','二','三','四','五','六','七','八','九','十','十一','十二']
-  const monthEnArr = ['Jan','Fed','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-  const dateKey = ['Y', 'M', 'D', 'h', 'm', 's']
-  const formatKey = ['YYYY', 'MM', 'DD', 'hh', 'mm', 'ss']
-  const multiple = {
-    Y: [31536e6, 316224e5],
-    M: { '28': 24192e5, '29': 25056e5, '30': 2592e6, '31': 26784e5 },
-    W: 6048e5,
-    D: 864e5,
-    h: 36e5,
-    m: 6e4,
-    s: 1e3
-  }
-  let defConfig = {
-    format: 'YYYY/MM/DD'
-  }
-
+(factory => factory(window))(win => {
   const _ = {
     index(el) {   // 获取元素相对于兄弟元素的位置
       let index = -1
@@ -147,14 +124,8 @@
       }
       return obj
     },
-    sup(num, count) {   // 数字不足指定位数前面补零
-      let before = '0'
-      if (count)
-        while (count > 2) {
-          before += '0'
-          count--
-        }
-      return num > 9 ? num : before + num
+    sup(num) {   // 数字不足两位数前面补零
+      return num < 10 ? '0' + num : num
     },
     formatInfo(format) {   // 判断时间格式所包含的值
       let info = { format }
@@ -188,6 +159,7 @@
         .replace(/h{2}/, _.sup(obj.h))
         .replace(/m{2}/, _.sup(obj.m))
         .replace(/s{2}/, _.sup(obj.s))
+        .replace(/W{2}/, '周' + weekArr[new Date(_.joinDefDate(obj)).getDay()])
     },
     resetDate(str, format) {    // 根据时间格式获取自定义时间对象
       format = format || defConfig.format
@@ -255,10 +227,24 @@
       }
     }
   }
+
+  const doc = win.document
+  const body = doc.body
+  const isFox = /.*Firefox.*/.test(navigator.userAgent)
+  const dayArr = [31,[28,29],31,30,31,30,31,31,30,31,30,31]
+  const weekArr = ['日','一','二','三','四','五','六']
+  const monthArr = ['一','二','三','四','五','六','七','八','九','十','十一','十二']
+  const monthEnArr = ['Jan','Fed','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  const dateKey = ['Y','M','D','h','m','s']
+  const formatKey = ['YYYY','MM','DD','hh','mm','ss']
+  const multiple = {Y:[31536e6,316224e5],M:{'28':24192e5,'29':25056e5,'30':2592e6,'31':26784e5},W:6048e5,D:864e5,h:36e5,m:6e4,s:1e3}
+  let defConfig = {
+    format: 'YYYY/MM/DD'
+  }
+  let maxId = new Date().getTime()              // 输入框唯一标识
   function DatePicker (options) {
     this.config = _.assign(defConfig, options)
-    this.create = _.newDateObj()
-    this.maxId = this.create.date.getTime() // 输入框唯一标识
+    this.create = _.newDateObj()                // 实例化时间
     this.init()
   }
   DatePicker.prototype = {
@@ -266,6 +252,6 @@
       
     }
   }
-  win.DatePicker = DatePicker
-  console.log("Author: Jhin \r\nGithub: https://github.com/Jhinsama/DatePicker")
+  win.createDatePicker = options => new DatePicker(options)
+  console.log("Author: Jhin\r\nGithub: https://github.com/Jhinsama/DatePicker")
 })
