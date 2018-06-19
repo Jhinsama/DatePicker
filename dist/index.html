@@ -15,18 +15,21 @@
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
+         -moz-transform: translate(-50%, -50%);
           -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
+           -o-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%);
     }
     #-date-dau-box{
-      transform: translateY(-155px);
+      -webkit-transform: translateY(-155px);
+         -moz-transform: translateY(-155px);
+          -ms-transform: translateY(-155px);
+           -o-transform: translateY(-155px);
+              transform: translateY(-155px);
     }
   </style>
 </head>
 <body>
-  
 
   <div id="-date-picker" class="-date-picker-main">
     <div id="-date-point">
@@ -35,11 +38,16 @@
     <div id="-date-main">
       <div id="-date-day">
         <div class="-date-head -dp-border-b">
-          <div></div>
+          <div>
+            <div class="-dp-ym-btn -dp-border">
+              <button id="-dp-ym-btn">2018年06月</button>
+              <span class="-dp-triangle"></span>
+            </div>
+          </div>
         </div>
         <div class="-date-main">
           <div>
-            <div id="-date-week">
+            <div class="-date-week">
               <button type="button">日</button>
               <button type="button">一</button>
               <button type="button">二</button>
@@ -57,13 +65,13 @@
                   <div class="-dp-before">6</div>
                   <div class="-dp-after">6</div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 57.14285714285714%;"
+                    style="position: absolute;bottom: 100%;left: 57.14285714285714%;"
                     ><button type="button">1</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 71.42857142857142%;"
+                    style="position: absolute;bottom: 100%;left: 71.42857142857142%;"
                     ><button type="button">2</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 85.71428571428571%;"
+                    style="position: absolute;bottom: 100%;left: 85.71428571428571%;"
                     ><button type="button">3</button></div>
                   <div class="-dp-day"><button type="button">4</button></div>
                   <div class="-dp-day"><button type="button">5</button></div>
@@ -97,7 +105,7 @@
                   <div class="-dp-before">7</div>
                   <div class="-dp-after">7</div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 85.71428571428571%;"
+                    style="position: absolute;bottom: 100%;left: 85.71428571428571%;"
                     ><button type="button">1</button></div>
                   <div class="-dp-day"><button type="button">2</button></div>
                   <div class="-dp-day"><button type="button">3</button></div>
@@ -134,19 +142,19 @@
                   <div class="-dp-before">8</div>
                   <div class="-dp-after">8</div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 28.57142857142857%;"
+                    style="position: absolute;bottom: 100%;left: 28.57142857142857%;"
                     ><button type="button">1</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 42.85714285714285%;"
+                    style="position: absolute;bottom: 100%;left: 42.85714285714285%;"
                     ><button type="button">2</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 57.14285714285714%;"
+                    style="position: absolute;bottom: 100%;left: 57.14285714285714%;"
                     ><button type="button">3</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 71.42857142857142%;"
+                    style="position: absolute;bottom: 100%;left: 71.42857142857142%;"
                     ><button type="button">4</button></div>
                   <div class="-dp-day"
-                    style="position: absolute; bottom: 100%;bottom: 100%;left: 85.71428571428571%;"
+                    style="position: absolute;bottom: 100%;left: 85.71428571428571%;"
                     ><button type="button">5</button></div>
                   <div class="-dp-day"><button type="button">6</button></div>
                   <div class="-dp-day"><button type="button">7</button></div>
@@ -182,16 +190,45 @@
           </div>
         </div>
         <div class="-date-foot -dp-border-t">
+          <div>
+            <div class="-dp-foot-btn">
+              <button id="-dp-dh-btn" class="-dp-border">16</button>
+            </div>
+            <div class="-dp-foot-btn">
+              <button id="-dp-dm-btn" class="-dp-border">28</button>
+            </div>
+            <div class="-dp-foot-btn">
+              <button id="-dp-ds-btn" class="-dp-border">43</button>
+            </div>
+            <div class="-dp-foot-btn">
+              <button id="-dp-confirm" class="-dp-border">完成</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="-date-month">
+        <div class="-date-head -dp-border-b">
+          <div></div>
+        </div>
+        <div class="-date-main">
           <div></div>
         </div>
       </div>
+      <div id="-date-year">
+        <div class="-date-head -dp-border-b">
+          <div></div>
+        </div>
+        <div class="-date-main">
+          <div></div>
+        </div>
+      </div> -->
     </div>
   </div>
 
 
 
 
-  
+
   <script src="picker.min.js"></script>
 </body>
 </html>
