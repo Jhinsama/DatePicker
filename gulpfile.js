@@ -10,7 +10,9 @@ let connect = require('gulp-connect');
 gulp.task("localhost", function () {
     connect.server({
         livereload: true,
-        port: 2017
+        host: '0.0.0.0',
+        port: 2017,
+        root: './dist'
     });
 });
 

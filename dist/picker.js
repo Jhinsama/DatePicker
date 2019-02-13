@@ -1,4 +1,6 @@
 (factory => factory(window))(win => {
+  if (!!win.createDatePicker) return
+
   const _ = {
     index(el) {   // 获取元素相对于兄弟元素的位置
       let index = -1
@@ -109,7 +111,7 @@
       while (el != null) {
         obj.top += el.offsetTop
         obj.left += el.offsetLeft
-        el = el.parentNode
+        el = el.offsetParent
       }
       return obj
     },
@@ -241,7 +243,9 @@
   let defConfig = {
     format: 'YYYY/MM/DD'
   }
+
   let maxId = new Date().getTime()              // 输入框唯一标识
+
   function DatePicker (options) {
     this.config = _.assign(defConfig, options)
     this.create = _.newDateObj()                // 实例化时间
